@@ -1,0 +1,56 @@
+---
+import Mongo from "./Icons/Mongo.astro";
+import Mysql from "./Icons/Mysql.astro";
+import Spring from "./Icons/Spring.astro";
+import TagPilll from '../components/TagPilll.astro';
+
+const TAGS = {
+    SPRING: {
+        name: "Spring",
+        class: "bg-black text-white",
+        icono: Spring,
+    },
+    MONGO: {
+        name: "Mongo",
+        class: "bg-green-600 text-white",
+        icono: Mongo,
+    },
+    MYSQL: {
+        name: "MySQL",
+        class: "bg-blue-600 text-white",
+        icono: Mysql,
+    }
+};
+
+const PROJECTS = [
+    {
+        title: 'Whatchdog',
+        description: 'Proyecto backend orientado a microservicios, donde se reportan daños en la infraestructura de la ciudad de Popayan',
+        link:'https://github.com/whastica/Proyectos_aprendizaje-_frontend',
+        Github:'https://github.com/whastica',
+        image:'/Images/whatchdog.webp',
+        tags: [TAGS.SPRING, TAGS.MONGO, TAGS.MYSQL]
+    }
+];
+---
+
+{PROJECTS.map(({ title, description, tags, image }) => (
+    <article>
+        <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
+        <p class="text-lg mb-4 text-pretty">{description}</p>
+        <ul class="flex gap-4 flex-row">
+            {tags.map(tag => (
+                <li class="flex items-center gap-2">
+                    <TagPilll class={`${tag.class} py-2 px-4`}>
+                        <tag.icono class="w-4 h-4" /> 
+                        <span>{tag.name}</span>
+                    </TagPill>
+                </li>
+            ))}
+        </ul>
+        <div class="mt-8">
+            <img class="rounded shadow-2xl shadow-white/5" src={image} alt={'Whatchdog Proyecto Full Stack'} />
+        </div>
+                
+    </article>
+))}
