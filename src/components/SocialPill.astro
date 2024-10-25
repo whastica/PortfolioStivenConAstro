@@ -1,11 +1,15 @@
 <a class="rounded-full 
     border border-white/10 
     flex justify-center 
-    items-center
-    md:py-2 md:px-4
-    gap-x-2 py-2 px-1 bg-white/5 
+    items-center 
+    md:py-2 md:px-4 
+    gap-x-2 py-2 px-1 
+    bg-white/50 
     hover:scale-110 hover:bg-white/15 
-    transition" {...Astro.props}
+    transition
+    body.light:bg-white-100 /* Fondo en modo claro */
+    body.light:hover:bg-white-100 /* Color en hover en modo claro */
+" {...Astro.props}
     target="_blank" rel="noopener noreferrer">
     <slot/>
 </a>

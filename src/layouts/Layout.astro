@@ -38,7 +38,7 @@ const { title } = Astro.props;
     }
 
     body {
-        background: #1a1a1a; /* Fondo oscuro */
+        background: linear-gradient(#1a1a1a); /* Fondo oscuro por defecto */
         display: flex;
         flex-direction: column;
         height: 100vh;
@@ -50,9 +50,28 @@ const { title } = Astro.props;
         color: #000; /* Texto oscuro */
     }
 
-    /* Estilos adicionales para el modo claro */
-    body.light a {
-        color: #1a1a1a; /* Color de los enlaces en modo claro */
+    /* Enlaces del menú */
+    nav a {
+        color: #ffffff; /* Color de enlaces en modo oscuro */
+        transition: color 0.3s; /* Transición suave */
+    }
+
+    body.light nav a {
+        color: #1a1a1a; /* Color de enlaces en modo claro */
+    }
+
+    /* Estilo para las tag pills (botones o elementos similares) */
+    .tag-pill {
+        background-color: #d0d0d0; /* Fondo más oscuro para contraste */
+        color: #1a1a1a; /* Texto oscuro */
+        padding: 8px 12px; /* Espaciado interno */
+        border-radius: 8px; /* Bordes redondeados */
+        transition: background 0.3s; /* Transición suave */
+        margin-right: 8px; /* Espaciado entre las tag pills */
+    }
+
+    .tag-pill:hover {
+        background-color: #b0b0b0; /* Color en hover para las tag pills */
     }
 </style>
 
@@ -63,13 +82,18 @@ const { title } = Astro.props;
 	// Aplicar el tema guardado en localStorage
 	if (currentTheme) {
 	  document.body.classList.toggle('light', currentTheme === 'light');
+	  themeToggleButton.textContent = currentTheme === 'light' ? 'Modo Día' : 'Modo Noche';
 	}
   
 	themeToggleButton.addEventListener('click', () => {
-	  const isLightTheme = document.body.classList.toggle('light');
-	  const newTheme = isLightTheme ? 'light' : 'dark';
+	const isLightTheme = document.body.classList.toggle('light');
+	const newTheme = isLightTheme ? 'light' : 'dark';
 	  
-	  // Guardar el tema en localStorage
-	  localStorage.setItem('theme', newTheme);
+	// Cambiar el texto del botón
+	themeToggleButton.textContent = isLightTheme ? 'Modo Día' : 'Modo Noche';
+  
+	// Guardar el tema en localStorage
+	localStorage.setItem('theme', newTheme);
+	
 	});
   </script>
