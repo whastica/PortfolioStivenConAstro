@@ -19,40 +19,76 @@ const TAGS = {
         name: "MySQL",
         class: "bg-blue-600 text-white",
         icono: Mysql,
-    }
+    },
+    POSTGRESQL: {
+        name: "postgresql",
+        class: "bg-blue-600 text-white",
+        icono: Mysql,
+    },
+
 };
 
 const PROJECTS = [
     {
         title: 'Whatchdog',
-        description: 'Proyecto backend orientado a microservicios, donde se reportan daños en la infraestructura de la ciudad de Popayan',
-        link:'https://github.com/whastica/Proyectos_aprendizaje-_frontend',
+        description: 'Esta plataforma permite a los ciudadanos de Popayán reportar problemas urbanos como baches, fallos en el alumbrado público y acumulación de basura, adjuntando fotos y ubicación geográfica. Los reportes son gestionados por la administración municipal, quien los asigna al ente correspondiente. Actualmente, el backend está en desarrollo continuo y el frontend es básico, pero cuenta con un video demostrativo.',
+        link:'https://github.com/whastica/whatchdog',
         Github:'https://github.com/whastica',
-        image:'/Images/whatchdog.webp',
+        image:'/Images/watchdog.webp',
         tags: [TAGS.SPRING, TAGS.MONGO, TAGS.MYSQL],
-        technologies:'Tecnologías'
+        technologies:'Tecnologías',
+        caracteristicasTecnicas:'Caracteristicas Técnicas',
+        descripcionTecnica:' El sistema sigue una arquitectura de microservicios con un enfoque hexagonal, implementando DDD (Domain-Driven Design) y CQRS para optimizar las operaciones de lectura y escritura en el microservicio de reportes.Tecnologías adicionales Spring Boot, Spring Security, JPA, Lombok, Java Util, Hibernate'
+    },
+    {
+        title: 'Sistema de Gestion Supermarket',
+        description: 'Esta plataforma permite a los administradores de un supermercado gestionar productos, órdenes y compras, además de mantener un control detallado del inventario. Actualmente, el backend está completo y funcional, mientras que el frontend está en desarrollo.',
+        link:'https://github.com/whastica/backendMarket',
+        Github:'https://github.com/whastica',
+        image:'/Images/superMarket.webp',
+        tags: [TAGS.SPRING, TAGS.MONGO, TAGS.MYSQL],
+        technologies:'Tecnologías',
+        caracteristicasTecnicas:'Caracteristicas Técnicas',
+        descripcionTecnica:' El sistema sigue una arquitectura por capas con una base de datos relacional y un estilo arquitectónico REST. Tecnologías adicionales Spring Boot, JPA, Lombok, Java Util, Hibernate.'
+    },
+    {
+        title: 'Sistema de Gestion para una Pizzeria',
+        description: 'Esta plataforma permite a las pizzerías gestionar productos, inventario y órdenes, facilitando tanto el control de compras como la oferta de productos a los clientes. El backend está funcional y el frontend está en proceso de implementación.',
+        link:'https://github.com/whastica/BackPizzeriaSecurity',
+        Github:'https://github.com/whastica',
+        image:'/Images/pizzeria.webp',
+        tags: [TAGS.SPRING, TAGS.MONGO, TAGS.MYSQL],
+        technologies:'Tecnologías',
+        caracteristicasTecnicas:'Caracteristicas Técnicas',
+        descripcionTecnica:'El sistema está desarrollado bajo una arquitectura por capas, utilizando un modelo REST con base de datos relacional. Tecnologías adicionales Spring Boot, JPA, Lombok, Java Util, Hibernate.'
     }
 ];
 ---
 
-{PROJECTS.map(({ title, description, tags, image, technologies }) => (
-    <article>
-        <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
-        <p class="text-lg mb-4 text-pretty">{description}</p>
-        <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{technologies}</h3>
-        <ul class="flex gap-4 flex-row">
-            {tags.map(tag => (
-                <li class="flex items-center gap-2">
-                    <TagPilll class={`${tag.class} py-2 px-4`}>
-                        <tag.icono class="w-4 h-4" /> 
-                        <span>{tag.name}</span>
-                    </TagPill>
-                </li>
-            ))}
-        </ul>
-        <div class="mt-8">
-            <img class="rounded shadow-2xl shadow-white/5" src={image} alt={'Whatchdog Proyecto Full Stack'} />
-        </div>
-                
-    </article>
-))}
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {PROJECTS.map(({ title, description, tags, image, link, Github, technologies, caracteristicasTecnicas, descripcionTecnica }) => (
+        <article class="bg-white/10 shadow-lg rounded-2xl p-6 flex flex-col gap-4">
+            <div class="flex flex-col items-center">
+                <img class="w-48 h-32 object-cover rounded mb-4" src={image} alt={title} />
+                <h3 class="text-xl font-bold text-custom-cyan mb-2">{title}</h3>
+                <p class="text-base text-gray-300 mb-4">{description}</p>
+            </div>
+            <h4 class="text-lg font-semibold text-custom-cyan mb-2">{caracteristicasTecnicas}</h4>
+            <p class="text-base text-gray-300 mb-4">{descripcionTecnica}</p>
+            <h4 class="text-lg font-semibold text-custom-cyan mb-2">{technologies}</h4>
+            <ul class="flex gap-2 mb-4">
+                {tags.map(tag => (
+                    <li class="flex items-center gap-2">
+                        <TagPilll class={`${tag.class} py-1 px-3`}>  
+                            <span>{tag.name}</span>
+                        </TagPilll>
+                    </li>
+                ))}
+            </ul>
+            <div class="flex gap-4">
+                <a href={link} target="_blank" class="bg-white/50 text-white py-2 px-4 rounded hover:bg-custom-cyan">Demo</a>
+                <a href={Github} target="_blank" class="bg-white/50 text-white py-2 px-4 rounded hover:bg-custom-cyan">GitHub</a>
+            </div>
+        </article>
+    ))}
+</div>

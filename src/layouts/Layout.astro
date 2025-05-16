@@ -80,20 +80,25 @@ const { title } = Astro.props;
 	const currentTheme = localStorage.getItem('theme');
   
 	// Aplicar el tema guardado en localStorage
+    
 	if (currentTheme) {
 	  document.body.classList.toggle('light', currentTheme === 'light');
-	  themeToggleButton.textContent = currentTheme === 'light' ? 'Modo Día' : 'Modo Noche';
+      if (themeToggleButton) {
+        themeToggleButton.textContent = currentTheme === 'light' ? 'Modo Día' : 'Modo Noche';
+      }
 	}
-  
-	themeToggleButton.addEventListener('click', () => {
-	const isLightTheme = document.body.classList.toggle('light');
-	const newTheme = isLightTheme ? 'light' : 'dark';
-	  
-	// Cambiar el texto del botón
-	themeToggleButton.textContent = isLightTheme ? 'Modo Día' : 'Modo Noche';
-  
-	// Guardar el tema en localStorage
-	localStorage.setItem('theme', newTheme);
-	
-	});
+
+    if (themeToggleButton) {
+        themeToggleButton.addEventListener('click', () => {
+        const isLightTheme = document.body.classList.toggle('light');
+        const newTheme = isLightTheme ? 'light' : 'dark';
+        
+        // Cambiar el texto del botón
+        themeToggleButton.textContent = isLightTheme ? 'Modo Día' : 'Modo Noche';
+    
+        // Guardar el tema en localStorage
+        localStorage.setItem('theme', newTheme);
+        
+        });
+    }
   </script>
