@@ -1,3 +1,4 @@
+
 ---
 import Layout from '../layouts/Layout.astro';
 import Badge from '../components/Badge.astro';
@@ -10,48 +11,88 @@ import Briefcase from '../components/Icons/Briefcase.astro';
 import Projects from '../components/Projects.astro';
 ---
 
-<Layout title="Portfolio de Stiven Caicedo - Desarrollador y Programador web">
-	<main class="px-4">
-		<SectionContainer id="top" class="py-16 md:py-32 lg:py-44 pb-32" >
-			<img
-                class="rounded-full w-24 h-24 mr-4" 
-                src="/Images/stivenfoto.jpg" 
-                alt="Whalen Caicedo Photo"
-            />
-			<h1 id ="sobreMi" class="text-custom-cyan text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-4 lg:pb-10">Hola!! Soy Stiven Caicedo <a href="https://www.linkedin.com/in/whalen-stiven-caicedo/" target="_blank"  rel="noopener" class="flex justify-center items-center"><Badge>Disponible para Trabajar </Badge></a></h1>
-			<h2 class="text-xl lg:text-2xl md:text-2xl opacity-80 text-wrap"> <span class="opacity-80"> Desarrollador Web </span></h2>
-			<br>
-			<h4 text-base md:text-lg leading-relaxed mt-4>Soy un <span class="text-custom-cyan"> Desarrollador Web con conocimientos en frontend y backend </span> apasionado por crear aplicaciones web intuitivas y funcionales. Aunque no cuento con experiencia laboral formal, 
-				he desarrollado varios <span class="text-custom-cyan">proyectos independientes</span> que demuestran mis habilidades técnicas y creatividad. Con una sólida formación en  
-				<span class="text-custom-cyan">ingeniería de sistemas,</span> estoy listo para aplicar mis conocimientos en la industria, aportando soluciones innovadoras y centradas en el usuario. Estoy entusiasmado por colaborar en proyectos desafiantes que me permitan seguir creciendo y contribuyendo al éxito del equipo.</h4>
-		
-					
-			<nav id="contacto" class="flex flex-col sm:flex-row gap-4 mt-2">
-				<SocialPill href="https://github.com/whastica">
-					<Github class="size-4 lg:size-6"/>
-					Github
-				</SocialPill>
-				<SocialPill href="https://www.linkedin.com/in/whalen-stiven-caicedo/">
-					<Linkedin class="size-4 lg:size-6"/>
-					LinkedIn
-				</SocialPill>
-				<SocialPill href="mailto:whalensoft@gmail.com"> <!-- Cambié el href para el correo -->
-					<Mail class="size-4 lg:size-6"/>
-					whalensoft@gmail.com
-				</SocialPill>
-			</nav>
-		</SectionContainer>
+<Layout title="Portfolio de Stiven Caicedo - Desarrollador y Programador Web Full Stack">
+  <main class="px-4">
+    <!-- SOBRE MÍ -->
+    <SectionContainer id="top" class="py-16 md:py-24 lg:py-32 pb-8 fade-in-up">
+      <div class="flex flex-col items-center md:items-start gap-4">
+        <div class="relative group">
+          <img
+            class="rounded-full w-32 h-32 md:w-36 md:h-36 object-cover border-4 border-custom-cyan/30 shadow-2xl transition-all duration-300 group-hover:scale-105 group-hover:border-custom-cyan/50" 
+            src="/Images/stivenfoto.jpg" 
+            alt="Stiven Caicedo - Desarrollador Web"
+            loading="eager"
+          />
+          <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-custom-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
 
-		<SectionContainer id="proyectos">
-			<h2 class="text-2xl font-semibold mb-2 flex gap-2 items-center">
-				<Briefcase class="size-7"/>
-				Proyectos
-			</h2>
-			<Projects/>
-		</SectionContainer>
+        <div class="text-center md:text-left space-y-4">
+          <h1 id="sobreMi" class="text-custom-cyan text-3xl md:text-4xl lg:text-5xl font-bold flex flex-col md:flex-row items-center gap-4 pb-4 lg:pb-6">
+            <span>¡Hola! Soy Stiven Caicedo</span>
+            <a href="https://www.linkedin.com/in/whalen-stiven-caicedo/" target="_blank" rel="noopener" class="inline-flex">
+              <Badge>Disponible para Trabajar</Badge>
+            </a>
+          </h1>
 
+          <h2 class="text-xl lg:text-2xl md:text-2xl text-theme-secondary font-semibold">
+            <span class="bg-gradient-to-r from-custom-cyan to-blue-500 bg-clip-text text-transparent">
+              Desarrollador Web Full Stack
+            </span>
+          </h2>
 
-		
-	</main>
+          <div class="max-w-4xl space-y-4">
+            <p class="text-base md:text-lg leading-relaxed text-theme-secondary">
+              Soy un <span class="text-custom-cyan font-semibold">Desarrollador Web con experiencia en frontend y backend</span> 
+              apasionado por crear aplicaciones web intuitivas y funcionales. He desarrollado varios 
+              <span class="text-custom-cyan font-semibold">proyectos independientes</span> que demuestran mis habilidades técnicas y creatividad.
+            </p>
+            <p class="text-base md:text-lg leading-relaxed text-theme-secondary">
+              Con una sólida formación en <span class="text-custom-cyan font-semibold">Ingeniería de Sistemas</span>, 
+              estoy preparado para contribuir con soluciones innovadoras y centradas en el usuario. Me entusiasma 
+              colaborar en proyectos desafiantes que me permitan seguir creciendo profesionalmente.
+            </p>
+          </div>
+        </div>
+      </div>
+    </SectionContainer>
+
+    <!-- CONECTEMOS -->
+    <SectionContainer id="contacto" class="pt-4 pb-8 fade-in-up">
+      <div class="flex flex-col items-center gap-6">
+        <h3 class="text-2xl font-bold text-custom-cyan">¡Conectemos!</h3>
+        <nav class="flex flex-col sm:flex-row flex-wrap gap-3 w-full max-w-2xl justify-center">
+          <SocialPill href="https://github.com/whastica">
+            <Github class="w-5 h-5 md:w-6 md:h-6" />
+            <span>GitHub</span>
+          </SocialPill>
+
+          <SocialPill href="https://www.linkedin.com/in/whalen-stiven-caicedo/">
+            <Linkedin class="w-5 h-5 md:w-6 md:h-6" />
+            <span>LinkedIn</span>
+          </SocialPill>
+
+          <SocialPill href="mailto:whalensoft@gmail.com">
+            <Mail class="w-5 h-5 md:w-6 md:h-6" />
+            <span>Email</span>
+          </SocialPill>
+        </nav>
+      </div>
+    </SectionContainer>
+
+    <!-- PROYECTOS -->
+    <SectionContainer id="proyectos" class="pt-8 fade-in-up">
+      <div class="flex flex-col gap-6">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold mb-4 flex gap-3 items-center justify-center text-custom-cyan">
+            <Briefcase class="w-8 h-8" />
+            Proyectos Destacados
+          </h2>
+          <p class="text-theme-secondary text-lg max-w-2xl mx-auto">
+            Algunos de los proyectos que he desarrollado, demostrando mis habilidades en diferentes tecnologías y arquitecturas.
+          </p>
+        </div>
+        <Projects />
+      </div>
+    </SectionContainer>
+  </main>
 </Layout>
-

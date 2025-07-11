@@ -1,15 +1,28 @@
-<a class="rounded-full 
-    border border-white/10 
-    flex justify-center 
-    items-center 
-    md:py-2 md:px-4 
-    gap-x-2 py-2 px-1 
-    bg-white/50 
-    hover:scale-110 hover:bg-white/15 
-    transition
-    body.light:bg-white-100 /* Fondo en modo claro */
-    body.light:hover:bg-white-100 /* Color en hover en modo claro */
-" {...Astro.props}
-    target="_blank" rel="noopener noreferrer">
-    <slot/>
+<a 
+  class="
+    rounded-full 
+    border border-theme 
+    flex items-center justify-center 
+    px-4 py-2 md:px-5 md:py-2.5
+    gap-2 
+    bg-theme-surface 
+    text-theme 
+    hover:text-custom-cyan 
+    hover:bg-custom-cyan/10 
+    hover:border-custom-cyan/40 
+    transition-all duration-300 
+    hover:scale-105 
+    hover:shadow-md 
+    glass-effect 
+    font-medium 
+    text-sm md:text-base
+    group
+  " 
+  {...Astro.props}
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  <span class="transition-transform duration-300 group-hover:scale-110 flex items-center gap-2">
+    <slot />
+  </span>
 </a>
