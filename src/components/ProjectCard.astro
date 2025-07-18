@@ -1,6 +1,12 @@
 ---
 import TagPill from '../components/TagPilll.astro';
 
+interface Tag {
+  name: string;
+  icono: any;
+  class: string;
+}
+
 const {
   title,
   description,
@@ -24,24 +30,25 @@ const {
   fade-in-up
 ">
   <div class="flex flex-col gap-4">
-    <div class="relative overflow-hidden rounded-xl">
+
+    <figure class="relative overflow-hidden rounded-xl aspect-[3/2]">
       <img 
-        class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" 
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
         src={image} 
-        alt={title}
+        alt={`Captura del proyecto ${title}`}
         loading="lazy"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-    </div>
-    
-    <div class="space-y-3">
+    </figure>
+
+    <figcaption class="space-y-3 mt-4">
       <h3 class="text-xl font-bold text-custom-cyan group-hover:text-custom-cyan/80 transition-colors duration-300">
         {title}
       </h3>
       <p class="text-theme-secondary leading-relaxed">
         {description}
       </p>
-    </div>
+    </figcaption>
 
     <div class="space-y-3">
       <h4 class="text-lg font-semibold text-custom-cyan flex items-center gap-2">
@@ -57,7 +64,7 @@ const {
         {technologies}
       </h4>
       <div class="flex flex-wrap gap-2">
-        {tags.map(tag => (
+        {tags.map((tag: Tag) => (
           <TagPill class={tag.class}>
             <tag.icono class="w-4 h-4" />
             <span>{tag.name}</span>
@@ -71,6 +78,7 @@ const {
         href={link} 
         target="_blank" 
         rel="noopener noreferrer"
+        aria-label={`Ver demo del proyecto ${title}`}
         class="flex-1 bg-custom-cyan hover:bg-custom-cyan/80 
                text-white font-medium py-2 px-4 rounded-lg 
                transition-all duration-300 
@@ -82,6 +90,7 @@ const {
         href={Github} 
         target="_blank" 
         rel="noopener noreferrer"
+        aria-label={`Ver repositorio en GitHub del proyecto ${title}`}
         class="flex-1 bg-theme-surface hover:bg-theme-surface/80 
                text-theme border border-theme
                font-medium py-2 px-4 rounded-lg 
