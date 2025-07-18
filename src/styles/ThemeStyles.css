@@ -1,0 +1,30 @@
+:root {
+  color-scheme: light dark;
+  /* Variables CSS para el sistema de temas */
+  --bg-color: #1a1a1a;
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --text-color: #ffffff;
+  --text-secondary: #a0a0a0;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --accent-color: #00BCD4;
+}
+
+html {
+  font-family: 'Onest', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  transition: all 0.3s ease;
+}
+
+/* Tema claro */
+body.light {
+  --bg-color: #ffffff;
+  --surface-color: #f8f9fa;
+  --text-color: #1a1a1a;
+  --text-secondary: #6b7280;
+  --border-color: rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}

@@ -1,162 +1,81 @@
-
 ---
+// src/layouts/Layout.astro
 import '@fontsource-variable/onest';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-interface Props {
-	title: string;
-}
-const { title } = Astro.props;
+import type { LayoutProps } from '../types/LayoutTypes';
+
+// Importar estilos modularizados
+import '../styles/ThemeStyles.css';
+import '../styles/AnimationsStyles.css';
+import '../styles/NavigationStyles.css';
+
+// Props con valores por defecto
+interface Props extends LayoutProps {}
+
+const { 
+  title,
+  description = "Portfolio de Stiven Caicedo - Desarrollador Web Full Stack especializado en frontend y backend",
+  keywords = ["desarrollador web", "full stack", "frontend", "backend", "portfolio"],
+  ogImage = "/og-image.jpg",
+  canonical
+} = Astro.props;
+
+// Construir URL canónica
+const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
+const keywordsString = Array.isArray(keywords) ? keywords.join(', ') : keywords;
 ---
+
 <!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Portfolio de Stiven Caicedo - Desarrollador Web Full Stack especializado en frontend y backend" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body class="min-h-screen flex flex-col bg-theme text-theme transition-colors duration-300">
-		<Header />
-		<main class="relative z-10 flex-grow">
-			<slot />
-		</main>
-		<Footer class="relative z-10 bg-transparent" />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywordsString} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+    
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col bg-theme text-theme transition-colors duration-300">
+    <Header />
+    <main class="relative z-10 flex-grow">
+      <slot />
+    </main>
+    <Footer class="relative z-10 bg-transparent" />
+  </body>
 </html>
 
-<style is:global>
-    :root {
-        color-scheme: light dark;
-        /* Variables CSS para el sistema de temas */
-        --bg-color: #1a1a1a;
-        --surface-color: rgba(255, 255, 255, 0.1);
-        --text-color: #ffffff;
-        --text-secondary: #a0a0a0;
-        --border-color: rgba(255, 255, 255, 0.1);
-        --accent-color: #00BCD4;
-    }
-
-    html {
-        font-family: 'Onest', system-ui, sans-serif;
-        scroll-behavior: smooth;
-    }
-
-    body {
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-        transition: all 0.3s ease;
-    }
-
-    /* Tema claro */
-    body.light {
-        --bg-color: #ffffff;
-        --surface-color: #f8f9fa;
-        --text-color: #1a1a1a;
-        --text-secondary: #6b7280;
-        --border-color: rgba(0, 0, 0, 0.1);
-        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    }
-
-    /* Estilos para enlaces de navegación */
-    .nav-link {
-        color: var(--text-color);
-        transition: all 0.3s ease;
-        position: relative;
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-    }
-
-    .nav-link:hover {
-        color: var(--accent-color);
-        background-color: var(--surface-color);
-        transform: translateY(-2px);
-    }
-
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 2px;
-        background-color: var(--accent-color);
-        transition: all 0.3s ease;
-        transform: translateX(-50%);
-    }
-
-    .nav-link:hover::after {
-        width: 80%;
-    }
-
-    /* Animaciones sutiles */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .fade-in-up {
-        animation: fadeInUp 0.6s ease-out;
-    }
-
-    /* Mejoras en el scrollbar */
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: var(--bg-color);
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: var(--accent-color);
-        border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: #0097a7;
-    }
-
-    /* Efectos de glassmorphism */
-    .glass-effect {
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid var(--border-color);
-    }
-</style>
-
 <script>
-    // Mejorar el sistema de temas
-    const initTheme = () => {
-        const themeToggleButton = document.getElementById('theme-toggle');
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        
-        // Aplicar tema inicial
-        document.body.classList.toggle('light', currentTheme === 'light');
-        
-        if (themeToggleButton) {
-            themeToggleButton.textContent = currentTheme === 'light' ? '🌙 Modo Oscuro' : '☀️ Modo Claro';
-            
-            themeToggleButton.addEventListener('click', () => {
-                const isLightTheme = document.body.classList.toggle('light');
-                const newTheme = isLightTheme ? 'light' : 'dark';
-                
-                themeToggleButton.textContent = isLightTheme ? '🌙 Modo Oscuro' : '☀️ Modo Claro';
-                localStorage.setItem('theme', newTheme);
-            });
-        }
-    };
-
-    // Inicializar cuando el DOM esté listo
+  // Importar la funcionalidad del tema
+  import { initTheme, reinitTheme } from '../Utils/themeManager';
+  
+  // Inicializar cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', initTheme);
+  
+  // Para navegación SPA de Astro
+  document.addEventListener('astro:page-load', reinitTheme);
+  
+  // También inicializar inmediatamente si el DOM ya está listo
+  if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initTheme);
-    
-    // Para navegación SPA
-    document.addEventListener('astro:page-load', initTheme);
+  } else {
+    initTheme();
+  }
 </script>
