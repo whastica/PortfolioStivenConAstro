@@ -17,7 +17,7 @@ export default {
 		  },
 		  'light': {
 			'bg': '#ffffff',
-			'surface': '#f8f9fa',
+			'surface': '#edeff0',
 			'text': '#1a1a1a',
 			'text-secondary': '#6b7280',
 		  }

@@ -33,7 +33,7 @@ export const PROJECTS = [
   {
     title: "Watchdog",
     description:
-      "Plataforma ciudadana para reportar problemas urbanos en Popayán como baches, fallos en alumbrado público y acumulación de basura. Incluye geolocalización, carga de imágenes y sistema de gestión municipal.",
+      "Plataforma ciudadana para reportar problemas urbanos en Popayán como baches, fallos en alumbrado público y acumulación de basura. Incluye geolocalización, carga de imágenes monitoreo y seguimiento por parte del sistema de administtracion municipal",
     link: "https://github.com/whastica/whatchdog",
     Github: "https://github.com/whastica/whatchdog",
     image: "/Images/watchdog.webp",
@@ -46,7 +46,7 @@ export const PROJECTS = [
   {
     title: "Sistema de Gestión Supermarket",
     description:
-      "Plataforma completa para administrar supermercados, con gestión de productos, órdenes, compras y control detallado de inventario en tiempo real.",
+      "Plataforma completa para administrar supermercados, con gestión de productos, órdenes, compras y control detallado de inventario en tiempo real y manejo de roles.",
     link: "https://github.com/whastica/backendMarket",
     Github: "https://github.com/whastica/backendMarket",
     image: "/Images/superMarket.webp",
@@ -67,6 +67,6 @@ export const PROJECTS = [
     technologies: "🚀 Tecnologías",
     caracteristicasTecnicas: "⚙️ Características Técnicas",
     descripcionTecnica:
-      "Arquitectura por capas con modelo REST y base de datos relacional. Tecnologías: Spring Boot, JPA, Lombok, Hibernate.",
+      "Arquitectura por capas con modelo REST y base de datos relacional en my sql. Tecnologías: Spring Boot, spring Security, JPA, Lombok, Hibernate.",
   },
 ];

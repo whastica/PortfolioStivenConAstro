@@ -1,5 +1,7 @@
 ---
 import TagPill from '../components/TagPilll.astro';
+import YoutubeIcon from '../components/Icons/Youtube.astro';
+import GithubIcon from '../components/Icons/Github.astro';
 
 interface Tag {
   name: string;
@@ -14,6 +16,7 @@ const {
   image,
   link,
   Github,
+  Youtube,
   technologies,
   caracteristicasTecnicas,
   descripcionTecnica
@@ -73,31 +76,52 @@ const {
       </div>
     </div>
 
-    <div class="flex gap-3 pt-4">
+    <div class="flex flex-col sm:flex-row gap-3 pt-4">
       <a 
         href={link} 
         target="_blank" 
         rel="noopener noreferrer"
         aria-label={`Ver demo del proyecto ${title}`}
         class="flex-1 bg-custom-cyan hover:bg-custom-cyan/80 
-               text-white font-medium py-2 px-4 rounded-lg 
+               text-white font-medium py-3 px-4 rounded-lg 
                transition-all duration-300 
-               hover:scale-105 hover:shadow-lg text-center"
+               hover:scale-105 hover:shadow-lg text-center 
+               flex flex-col items-center justify-center gap-1"
       >
-        🚀 Demo
+        <span class="text-xl">🚀</span>
+        Demo
       </a>
+
       <a 
         href={Github} 
         target="_blank" 
         rel="noopener noreferrer"
         aria-label={`Ver repositorio en GitHub del proyecto ${title}`}
         class="flex-1 bg-theme-surface hover:bg-theme-surface/80 
-               text-theme border border-theme
-               font-medium py-2 px-4 rounded-lg 
-               transition-all duration-300 
-               hover:scale-105 hover:shadow-lg text-center"
+              text-theme border border-theme
+              font-medium py-3 px-4 rounded-lg 
+              transition-all duration-300 
+              hover:scale-105 hover:shadow-lg text-center 
+              flex flex-col items-center justify-center gap-1"
       >
-        💻 GitHub
+        <GithubIcon class="w-6 h-6" />
+        GitHub
+      </a>
+
+      <a 
+        href={Youtube} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        aria-label={`Ver video en YouTube del proyecto ${title}`}
+        class="flex-1 bg-red-600 hover:bg-red-700 
+              text-white border border-red-700
+              font-medium py-3 px-4 rounded-lg 
+              transition-all duration-300 
+              hover:scale-105 hover:shadow-lg text-center 
+              flex flex-col items-center justify-center gap-1"
+      >
+        <YoutubeIcon class="w-6 h-6" />
+        YouTube
       </a>
     </div>
   </div>
