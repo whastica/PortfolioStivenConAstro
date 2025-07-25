@@ -22,7 +22,7 @@ body {
 /* Tema claro */
 body.light {
   --bg-color: #ffffff;
-  --surface-color: #f8f9fa;
+  --surface-color: #f8f9fae0;
   --text-color: #1a1a1a;
   --text-secondary: #6b7280;
   --border-color: rgba(0, 0, 0, 0.1);

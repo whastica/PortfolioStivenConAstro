@@ -1,6 +1,7 @@
 import Mongo from "../components/Icons/Mongo.astro";
 import Mysql from "../components/Icons/Mysql.astro";
 import Spring from "../components/Icons/Spring.astro";
+import Youtube from "../components/Icons/Youtube.astro";
 
 export const TAGS = {
   SPRING: {
